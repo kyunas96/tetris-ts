@@ -1,15 +1,23 @@
 import Shape from "./shape";
+import ShapeOrientation from "../types/shapeOrientation";
+
+const LineOrientations = [
+  // horizontal
+  [1, 1, 1],
+  // vertical
+  [
+    [1],
+    [1],
+    [1]
+  ]
+]
 
 class Line extends Shape{
-  shapeArray: Array<number[]>
+  orientations: Array<ShapeOrientation>
 
   constructor(){
     super();
-    this.shapeArray =  [
-      [0, 1, 0],
-      [0, 1, 0],
-      [0, 1, 0]
-    ]
+    this.orientations = LineOrientations;
   }
 }
 
