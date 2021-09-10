@@ -16,7 +16,6 @@ class SquareShape extends Shape {
     this.orientations = SquareOrientations;
     this.currentOrientationIdx = 0;
     this.orientation = SquareOrientations[this.currentOrientationIdx];
-
   }
 }
 
