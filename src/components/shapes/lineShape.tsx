@@ -3,16 +3,17 @@ import ShapeOrientation from "../types/shapeOrientation";
 
 const LineOrientations = [
   // horizontal
-  [1, 1, 1],
+  [1, 1, 1, 1],
   // vertical
   [
+    [1],
     [1],
     [1],
     [1]
   ]
 ]
 
-class Line extends Shape{
+class LineShape extends Shape{
   orientations: Array<ShapeOrientation>
   orientation: ShapeOrientation;
   currentOrientationIdx: number
@@ -23,8 +24,6 @@ class Line extends Shape{
     this.currentOrientationIdx = 0;
     this.orientation = this.orientations[this.currentOrientationIdx];
   }
-
-  
 }
 
-export default Line;
+export default LineShape;
