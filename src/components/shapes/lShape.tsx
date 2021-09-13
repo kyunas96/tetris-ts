@@ -1,6 +1,8 @@
 import Shape from './shape';
 import ShapeOrientation from '../types/shapeOrientation';
 
+export type LShapeName = "l"
+
 const LShapeOrientations: Array<ShapeOrientation> = [
   [
     [1, 0],

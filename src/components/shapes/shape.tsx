@@ -1,12 +1,36 @@
 import ShapeOrientation from '../types/shapeOrientation';
+import ShapeNames from './shapeNames';
 
 abstract class Shape {
   abstract orientations: Array<ShapeOrientation>
   abstract orientation: ShapeOrientation
   abstract currentOrientationIdx: number
+  abstract ID: number
+
+  static IDarray = new Set<string>()
   // these functions will allow the arrays representing the shapes to be
   // transformed via rotations to update their orientation
 
+  static generateShapeID(shapeName: number): number {
+    switch (shapeName) {
+      case ShapeNames.LINE:
+        
+      case ShapeNames.L:
+
+      case ShapeNames.REV_L:
+
+      case ShapeNames.S:
+
+      case ShapeNames.Z:
+
+      case ShapeNames.T:
+
+      case ShapeNames.SQUARE:
+
+    }
+
+    return 0;
+  }
 
   rotateRight() {
     if (this.currentOrientationIdx === this.orientations.length) {
