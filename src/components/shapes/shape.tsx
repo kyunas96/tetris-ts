@@ -5,13 +5,13 @@ abstract class Shape {
   abstract orientations: Array<ShapeOrientation>
   abstract orientation: ShapeOrientation
   abstract currentOrientationIdx: number
-  abstract ID: number
+  abstract ID: string
 
   static IDarray = new Set<string>()
   // these functions will allow the arrays representing the shapes to be
   // transformed via rotations to update their orientation
 
-  static generateShapeID(shapeName: number): number {
+  static generateShapeID(shapeName: number): string {
     switch (shapeName) {
       case ShapeNames.LINE:
         
@@ -29,7 +29,7 @@ abstract class Shape {
 
     }
 
-    return 0;
+    return "";
   }
 
   rotateRight() {

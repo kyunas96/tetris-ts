@@ -27,7 +27,7 @@ class TShape extends Shape {
   orientations: Array<ShapeOrientation>
   orientation: ShapeOrientation
   currentOrientationIdx: number
-  ID: number
+  ID: string
 
   constructor() {
     super();
