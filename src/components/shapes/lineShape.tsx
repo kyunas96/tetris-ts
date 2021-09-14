@@ -23,7 +23,7 @@ class LineShape extends Shape{
 
   constructor(){
     super();
-    this.ID = Shape.generateShapeID(ShapeNames.LINE_SHAPE);
+    this.ID = Shape.generateShapeID(ShapeNames.LINE);
     this.orientations = LineOrientations;
     this.currentOrientationIdx = 0;
     this.orientation = this.orientations[this.currentOrientationIdx];
