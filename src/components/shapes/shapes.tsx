@@ -1,8 +1,8 @@
 import LShape from "./LShape";
-import RevLShape from './revLShape';
-import LineShape from "./lineShape";
-import SquareShape from './squareShape';
-import ZShape from './zShape';
+import RevLShape from './JShape';
+import LineShape from "./IShape";
+import SquareShape from './OShape';
+import ZShape from './ZShape';
 import SShape from './SShape';
 import TShape from './TShape';
 

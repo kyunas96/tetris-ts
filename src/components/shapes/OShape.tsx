@@ -15,7 +15,7 @@ class SquareShape extends Shape {
 
   constructor(){
     super();
-    this.ID = Shape.generateShapeID(ShapeNames.SQUARE);
+    this.ID = Shape.generateShapeID(ShapeNames.O);
     this.orientations = SquareOrientations;
     this.currentOrientationIdx = 0;
     this.orientation = SquareOrientations[this.currentOrientationIdx];

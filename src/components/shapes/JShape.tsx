@@ -31,7 +31,7 @@ class RevLShape extends Shape {
 
   constructor() {
     super();
-    this.ID = Shape.generateShapeID(ShapeNames.REV_L)
+    this.ID = Shape.generateShapeID(ShapeNames.J)
     this.orientations = RevLShapeOrientations;
     this.currentOrientationIdx = 0;
     this.orientation = this.orientations[this.currentOrientationIdx];
