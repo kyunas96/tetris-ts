@@ -1,11 +1,11 @@
+import IShape from "./IShape";
 import LShape from "./LShape";
-import RevLShape from './JShape';
-import LineShape from "./IShape";
-import SquareShape from './OShape';
-import ZShape from './ZShape';
+import JShape from './JShape';
+import OShape from './OShape';
 import SShape from './SShape';
 import TShape from './TShape';
+import ZShape from './ZShape';
 
-type Shapes = LineShape | LShape | RevLShape | SquareShape | ZShape | SShape | TShape;
+type Shapes = IShape | LShape | JShape | OShape | SShape | TShape | ZShape;
 
 export default Shapes;
