@@ -6,7 +6,13 @@ type TetrisViewProps = {
 }
 
 const TetrisView = (props: TetrisViewProps) => (
-  <div>Tetris</div>
+  <>
+    <div>Tetris</div>
+    {/* make subcomponents to deal with rendering of the board */}
+    <div>
+      
+    </div>
+  </>
 )
 
 export default TetrisView;
