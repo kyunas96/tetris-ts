@@ -5,6 +5,7 @@ export interface BlockProps {
 }
 
 const getColorClassFromID = (ID: number) => {
+  if (ID === 0) return "";
   const colorDigit = Math.floor(ID / 1000) - 1;
 
   switch (colorDigit) {
