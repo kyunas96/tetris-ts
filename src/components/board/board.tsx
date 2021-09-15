@@ -19,10 +19,6 @@ class Board {
     return blocks;
   }
 
-  render(){
-    {this.generateBoard()}
-  }
-
 }
 
 export default Board;
