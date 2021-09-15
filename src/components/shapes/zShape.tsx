@@ -18,7 +18,7 @@ class ZShape extends Shape {
   orientations: Array<ShapeOrientation>
   orientation: ShapeOrientation
   currentOrientationIdx: number
-  ID: string
+  ID: number
 
   constructor(){
     super();
