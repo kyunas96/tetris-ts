@@ -1,3 +1,5 @@
+import { Block, BlockProps } from "./block"
+
 class Board {
   board: Array<number[]>
 

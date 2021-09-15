@@ -4,14 +4,19 @@
   its blocks
 */
 
+// enum values not explicitly defined will start at 0 and auto increment
+/**
+ * SINCE THIS ENUM TAKES ADVANTAGE OF AUTO INCREMENTED INTEGER VALUES, ALL
+ * REFERENCES TO THIS ENUM MUST REFERENCE ENUM VALUES IN THE SAME ORDER
+ */
 enum ShapeNames{
-  LINE,
+  I,
+  J,
   L,
-  REV_L,
+  O,
   S,
-  Z,
   T,
-  SQUARE
+  Z,
 }
 
 export default ShapeNames;

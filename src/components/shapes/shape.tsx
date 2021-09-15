@@ -12,10 +12,10 @@ abstract class Shape {
   // transformed via rotations to update their orientation
 
 
-  static getUniqueID(){
+  static getUniqueID() {
     let randomNumber = Math.random() * 999;
 
-    while(!Shape.IDarray.has(randomNumber)){
+    while (!Shape.IDarray.has(randomNumber)) {
       randomNumber = Math.random() * 999;
     }
     Shape.IDarray.add(randomNumber);
@@ -24,27 +24,27 @@ abstract class Shape {
 
   static generateShapeID(shapeName: number): number {
     switch (shapeName) {
-      case ShapeNames.LINE:
-        const LINE_PREFIX = 1000;
-        return LINE_PREFIX + Shape.getUniqueID();
+      case ShapeNames.I:
+        const I_PREFIX = 1000;
+        return I_PREFIX + Shape.getUniqueID();
+      case ShapeNames.J:
+        const J_PREFIX = 2000;
+        return J_PREFIX + Shape.getUniqueID();
       case ShapeNames.L:
-        const L_PREFIX = 2000;
+        const L_PREFIX = 3000;
         return L_PREFIX + Shape.getUniqueID();
-      case ShapeNames.REV_L:
-        const REV_L_PREFIX = 3000;
-        return REV_L_PREFIX + Shape.getUniqueID();
+      case ShapeNames.O:
+        const O_PREFIX = 4000;
+        return O_PREFIX + Shape.getUniqueID();
       case ShapeNames.S:
-        const S_PREFIX = 4000;
+        const S_PREFIX = 5000;
         return S_PREFIX + Shape.getUniqueID();
-      case ShapeNames.Z:
-        const Z_PREFIX = 5000;
-        return Z_PREFIX + Shape.getUniqueID();
       case ShapeNames.T:
         const T_PREFIX = 6000;
         return T_PREFIX + Shape.getUniqueID();
-      case ShapeNames.SQUARE:
-        const SQUARE_PREFIX = 7000;
-        return SQUARE_PREFIX + Shape.getUniqueID();
+      case ShapeNames.Z:
+        const Z_PREFIX = 7000;
+        return Z_PREFIX + Shape.getUniqueID();
       default:
         return Infinity;
     }
