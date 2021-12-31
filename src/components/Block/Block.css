@@ -1,0 +1,7 @@
+.block{
+  width: 10%;
+  height: 100%;
+  background-color: aqua;
+  box-sizing: border-box;
+  border: 1px solid black;
+}

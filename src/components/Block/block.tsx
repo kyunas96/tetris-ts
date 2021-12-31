@@ -1,11 +1,11 @@
 import ShapeNames from "../shapes/shapeNames";
+import "./Block.css";
 
 export interface BlockProps {
   ID: number
 }
 
 const getColorClassFromID = (ID: number) => {
-  if (ID === 0) return "";
   const colorDigit = Math.floor(ID / 1000) - 1;
 
   switch (colorDigit) {
