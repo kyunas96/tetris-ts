@@ -1,10 +1,11 @@
 import React from "react";
 import BoardType from "./types/board";
 import { Block } from "./Block/block";
-import Board from "./board/Board";
+import BoardView from "./board/BoardView";
 import ShapeGenerator from "./utils/shapeGenerator";
 import Shape from "./shapes/shape";
 import "./Tetris.css";
+import ShapeNames from "./shapes/shapeNames";
 
 
 /**
@@ -12,19 +13,68 @@ import "./Tetris.css";
  * the board member will be made by calls to board instance methods
  */
 class Tetris extends React.Component<any, any> {
-  board: BoardType
-  refreshBoard: BoardType
-  currentShape: Shape | null
-  currentPieceCoords: Array<number[]>
-  refreshTime: number
+  // board: BoardType
+  // refreshBoard: BoardType
+  // currentShape: Shape | null
+  // currentPieceCoords: Array<number[]>
+  // refreshTime: number
 
   constructor(props: any) {
     super(props);
-    this.board = new Array(40).fill(0).map(row => new Array(10).fill(0));
-    this.refreshBoard = new Array(40).fill(0).map(row => new Array(10).fill(0));
-    this.currentShape = null;
-    this.currentPieceCoords = [];
-    this.refreshTime = 1000;
+    this.state = {
+      board: Array(20).fill(0).map(row => new Array(10).fill(0)),
+      refreshBoard: Array(20).fill(0).map(row => new Array(10).fill(0)),
+      currentPiece: null,
+      currentPieceCoords: [
+        [0, 3],
+        [0, 4],
+        [0, 5]
+      ],
+      refreshTime: 1000,
+      paused: false
+    }
+    this.state.board[0][3] = 
+    this.state.board[0][4] = 
+    this.state.board[0][5] = ShapeNames.T;
+  }
+
+  componentDidMount(){
+    this.start();
+  }
+
+  start(){
+    setTimeout(() => {
+      this.tick();
+    }, 500)
+  }
+
+  tick(){
+    setTimeout(() => {
+      this.setNextState();
+      this.tick();
+    }, 500)
+  }
+
+  setNextState() {
+    const swapBuffer: number[][] = this.state.board.map(
+      (inner: number[]) => inner.slice());
+    console.log("swapBuffer: " + swapBuffer);
+    const newCurrentCoords = [];
+    for(const currentCoord of this.state.currentPieceCoords){
+      const [x, y] = currentCoord;
+      const currentColor = swapBuffer[x][y];
+      swapBuffer[x][y] = 0;
+      const newX = x + 1;
+      const newY = y ;
+      swapBuffer[newX][newY] = currentColor;
+      newCurrentCoords.push([newX, newY]);
+    }
+    console.log(newCurrentCoords);
+    this.setState({
+      ...this.state,
+      board: swapBuffer,
+      currentPieceCoords: newCurrentCoords
+    })
   }
 
   generateNewPiece() {
@@ -39,14 +89,13 @@ class Tetris extends React.Component<any, any> {
 
   }
 
-  calculateNextState() {
-
-  }
-
   refresh() {
     // if a new piece has not been dropped then drop one
-    if (this.currentShape === null) {
-      this.currentShape = this.generateNewPiece();
+    if (this.state.currentShape === null) {
+      this.setState({
+        ...this.state,
+        currentShape: this.generateNewPiece()
+      })
     } else {
       /*
         1. move the piece down one square
@@ -58,12 +107,12 @@ class Tetris extends React.Component<any, any> {
   }
 
   rotateLeftCurrentShape() {
-    this.currentShape?.rotateLeft();
+    this.state.currentShape?.rotateLeft();
     this.refresh();
   }
 
   rotateRightCurrentShape() {
-    this.currentShape?.rotateRight();
+    this.state.currentShape?.rotateRight();
     this.refresh();
   }
 
@@ -74,7 +123,7 @@ class Tetris extends React.Component<any, any> {
   render() {
     return (
       <div className="tetris">
-        <Board board={this.board} />
+        <BoardView board={this.state.board} />
       </div>
     )
   }

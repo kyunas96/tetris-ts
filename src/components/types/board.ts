@@ -1,3 +1,3 @@
-type Board = number[][];
+type BoardType = number[][];
 
-export default Board;
+export default BoardType;

@@ -1,7 +1,15 @@
 .block{
-  width: 10%;
   height: 100%;
-  background-color: aqua;
+  width: 12%;
+  background-color: grey;
   box-sizing: border-box;
   border: 1px solid black;
+}
+
+.cyan{
+  background-color: cyan;
+}
+
+.purple{
+  background-color: purple;
 }

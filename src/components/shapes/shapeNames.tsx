@@ -10,7 +10,7 @@
  * REFERENCES TO THIS ENUM MUST REFERENCE ENUM VALUES IN THE SAME ORDER
  */
 enum ShapeNames{
-  I,
+  I = 1,
   J,
   L,
   O,

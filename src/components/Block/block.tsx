@@ -6,9 +6,7 @@ export interface BlockProps {
 }
 
 const getColorClassFromID = (ID: number) => {
-  const colorDigit = Math.floor(ID / 1000) - 1;
-
-  switch (colorDigit) {
+  switch (ID) {
     case ShapeNames.J:
       return "blue";
     case ShapeNames.L:
