@@ -24,8 +24,7 @@ class Tetris extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      board: Array(BOARD_WIDTH).fill(0).map(row => new Array(BOARD_WIDTH).fill(0)),
-      refreshBoard: Array(BOARD_HEIGHT).fill(0).map(row => new Array(BOARD_WIDTH).fill(0)),
+      board: Array(BOARD_HEIGHT).fill(0).map(row => new Array(BOARD_WIDTH).fill(0)),
       currentPiece: null,
       currentPieceCoords: [
         [0, 3],
@@ -33,7 +32,9 @@ class Tetris extends React.Component<any, any> {
         [0, 5]
       ],
       refreshTime: 1000,
-      paused: false
+      paused: false,
+      currentTick : null,
+      currentPieceColor: ShapeNames.T
     }
     this.state.board[0][3] = 
     this.state.board[0][4] = 
@@ -51,36 +52,67 @@ class Tetris extends React.Component<any, any> {
   }
 
   tick(){
-    setTimeout(() => {
-      this.setNextState();
-      this.tick();
-    }, 500)
+    // setTimout returns a reference to the function on the callback
+    // stack, allows for interruptions of the current tick
+    if (this.currentPieceHasHitBottom()) {
+      console.log("Hit bottom");
+    }else{
+      const currentTick = setTimeout(() => {
+        this.setNextState();
+        this.tick();
+      }, 500)
+      // save the reference to the current setTimout function
+      this.setState({
+        ...this.state,
+        currentTick
+      })
+    }
+    
   }
 
-  
-
+  // migrate function body to tick
   setNextState() {
     // function responsibilities
     // Check for collisions
     // Check to see if at the bottom of the grid
-    const swapBuffer: number[][] = this.state.board.map(
-      (inner: number[]) => inner.slice());
-    console.log("swapBuffer: " + swapBuffer);
-    const newCurrentCoords = [];
-    for(const currentCoord of this.state.currentPieceCoords){
-      const [x, y] = currentCoord;
-      const currentColor = swapBuffer[x][y];
-      swapBuffer[x][y] = 0;
-      const newX = x + 1;
-      const newY = y ;
-      swapBuffer[newX][newY] = currentColor;
-      newCurrentCoords.push([newX, newY]);
+    // clear the previous coordinates with 0's
+    // calculate the next position for the current piece
+    // calculate the next board given the new piece coords
+
+    const swapBuffer = this.state.board.map((row: number[]) => row.slice());
+    // console.log("swapBuffer: " + swapBuffer);
+    for(const curCoord of this.state.currentPieceCoords){
+      const [curRow, curCol] = curCoord;
+      swapBuffer[curRow][curCol] = 0;
     }
+
+    const newPieceCoords =  this.state.currentPieceCoords.map((curCoord: number[]) => {
+      const [curRow, curCol] = curCoord;
+      return [curRow + 1, curCol];
+    })
+    
+    for(const curNewCoord of newPieceCoords){
+      const [newRow, newCol] = curNewCoord;
+      console.log("curNewCoord: " + JSON.stringify(curNewCoord));
+      swapBuffer[newRow][newCol] = this.state.currentPieceColor;
+    }
+
+    console.log("newBoard: " + JSON.stringify(swapBuffer));
+
     this.setState({
       ...this.state,
       board: swapBuffer,
-      currentPieceCoords: newCurrentCoords
+      currentPieceCoords: newPieceCoords
     })
+    
+  }
+
+  calculateNextBoardState(){
+
+  }
+
+  isGameOver(){
+
   }
 
   
@@ -88,7 +120,7 @@ class Tetris extends React.Component<any, any> {
   // 1. leave the board as is
   // 2. check to see if the game has been lost
   // 3. if game is not over, drop the next piece
-  detectCollision(currentPieceCoords: number[][]): Boolean {
+  detectCollision(): Boolean {
     // cycle through the coordinates of the current piece
     for (const curCoord of this.state.currentPieceCoords){
       // deconstruct x and y values from the current coord
@@ -104,12 +136,12 @@ class Tetris extends React.Component<any, any> {
     return false;
   }
 
-  currentPieceHasHitBottom(currentPieceCoords: number[][]): Boolean{
+  currentPieceHasHitBottom(): Boolean{
     // given an array containing the indices of the current piece
     // check to see if the coordinates have hit the bottom
     for(const curCoord of this.state.currentPieceCoords){
-      const [curX, curY] = curCoord;
-      if(curY === BOARD_HEIGHT - 1) return true;
+      const [curRow, curCol] = curCoord;
+      if(curRow === BOARD_HEIGHT - 1) return true;
     }
     return false;
   }
