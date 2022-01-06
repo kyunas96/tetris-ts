@@ -1,12 +1,12 @@
-import IShape from "../shapes/IShape";
-import LShape from "../shapes/LShape";
-import JShape from '../shapes/JShape';
-import OShape from '../shapes/OShape';
-import SShape from '../shapes/SShape';
-import TShape from '../shapes/TShape';
-import ZShape from '../shapes/ZShape';
+import IShape from "../components/shapes/IShape";
+import LShape from "../components/shapes/LShape";
+import JShape from '../components/shapes/JShape';
+import OShape from '../components/shapes/OShape';
+import SShape from '../components/shapes/SShape';
+import TShape from '../components/shapes/TShape';
+import ZShape from '../components/shapes/ZShape';
 
-import Shapes from '../shapes/shapes';
+import Shapes from '../components/shapes/shapes';
 
 const ShapeGenerator = () => {
   const seed = Math.random() * 100;
