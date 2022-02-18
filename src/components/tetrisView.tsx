@@ -1,5 +1,5 @@
 import React from 'react';
-import Board from './types/board';
+import Board from '../types/board';
 
 type TetrisViewProps = {
   board: Board

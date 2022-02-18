@@ -1,5 +1,5 @@
 import Shape from "./shape";
-import ShapeOrientation from "../types/shapeOrientation";
+import ShapeOrientation from "../../types/shapeOrientation";
 import ShapeNames from "./shapeNames";
 
 const RevLShapeOrientations: Array<ShapeOrientation> = [

@@ -1,4 +1,4 @@
-import BoardType from '../types/board';
+import BoardType from '../../types/board';
 import BoardRow from './BoardRow';
 import "./Board.css";
 

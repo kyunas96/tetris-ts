@@ -1,4 +1,4 @@
-import ShapeOrientation from '../types/shapeOrientation';
+import ShapeOrientation from '../../types/shapeOrientation';
 import ShapeNames from './shapeNames';
 
 abstract class Shape {

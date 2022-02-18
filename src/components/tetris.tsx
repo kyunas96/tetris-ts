@@ -1,5 +1,5 @@
 import React from "react";
-import BoardType from "./types/board";
+import BoardType from "../types/board";
 import { Block } from "./Block/block";
 import BoardView from "./board/BoardView";
 import ShapeGenerator from "../utils/shapeGenerator";
